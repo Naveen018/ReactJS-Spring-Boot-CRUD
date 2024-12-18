@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  react-app:
+    build:
+      context: . # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Map port 3000 of the container to port 3000 of the host
+    volumes:
+      - .:/app # Bind mount the current directory to the /app directory in the container
+      - /app/node_modules # Prevent overwriting the node_modules in the container
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
